@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.star-container{
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 33px;
+    display: block;
+    position: relative;
+}
+
+input{ /* next to input type radio button star is shown and input is hidden*/
+    display: none;
+}
+
+label{
+    width: 33px;
+    height: 33px;
+    cursor: pointer;
+    display: inline-flex;
+    background-color: white;
+	clip-path: polygon(50% 0%, 66% 32%, 100% 38%, 78% 64%, 83% 100%, 50% 83%, 17% 100%, 22% 64%, 0 38%, 34% 32%);
+}
+
+label::before{
+	width: 90%;
+	height: 90%;
+	content: "";
+	z-index: -1;
+	display: block;
+	margin-left: 5%;
+	margin-top: 5%;
+	clip-path: polygon(50% 0%, 66% 32%, 100% 38%, 78% 64%, 83% 100%, 50% 83%, 17% 100%, 22% 64%, 0 38%, 34% 32%);
+	background-size: 205% 100%;
+	background-position: 0 0;
+
+}
+
+
+input:checked{
+    background: yellow;  
+}
+
+label+input:not(:checked){
+    background: yellow;  
+}

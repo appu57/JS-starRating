@@ -1,0 +1,104 @@
+:root {
+    --star-shape: polygon(
+      50% 4%,
+      61% 39%,
+      98% 39%,
+      68% 61%,
+      79% 95%,
+      50% 74%,
+      21% 95%,
+      32% 61%,
+      2% 39%,
+      39% 39%
+    );
+  }
+  
+  *,
+  *::before,
+  *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-size: 16px;
+  }
+  
+  .star-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+  }
+  
+  .wraper-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .stars,
+  .shadows {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    gap: 0.25em;
+  }
+  
+  .shadows {
+    /* top: 10px; */
+    z-index: -1;
+    isolation: isolate;
+    pointer-events: auto;
+  }
+  
+  .stars {
+    cursor: pointer;
+  }
+  
+  .star {
+    clip-path: var(--star-shape);
+    background-color: gray;
+    width: 5em;
+    aspect-ratio: 1;
+    pointer-events: auto;
+  }
+  
+  .stars .star {
+    background-color: transparent;
+    background-image: linear-gradient(
+      yellow 0%,
+      yellow 100%
+    );
+    background-size: 200%;
+    background-repeat: repeat-y;
+    background-position-x: calc((100 + (100 - var(--star-rate, 0))) * 1%);/*we are overlapping star on shadow , whenever star-rate is assigned the star container*/
+  }
+  
+
+  /* background-position-x: This property sets the horizontal position of a background image within its container element.
+
+  calc(...): This is a CSS function that performs mathematical calculations to determine the value of a property. It allows you to use arithmetic expressions to dynamically calculate values.
+  
+  (100 + (100 - var(--star-rate, 0))): This is the expression inside the calc(...) function. It consists of two parts:
+  
+  100: This represents the full width of the container, which is set to 100%.
+
+  (100 - var(--star-rate, 0)): This is a subtraction operation. It subtracts the value of the CSS custom property --star-rate from 100. If the custom property --star-rate is not defined, it defaults to 0.
+  
+  * 1%: This part of the expression multiplies the result of the previous calculation by 1%. This effectively converts the calculated value into a percentage. */
+ 
+  /* If --star-rate is 0, the background image will be positioned at the far right edge of the container (100%).
+
+If --star-rate is 100, the background image will be positioned at the far left edge of the container (0%).
+
+For values in between 0 and 100, the background image will be positioned proportionally between the far left and far right edges of the container. */
